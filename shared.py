@@ -3,7 +3,12 @@ import sys
 
 
 def input_files():
-    arg = sys.argv[1]
+    try:
+        arg = sys.argv[1]
+    except IndexError:
+        print("Usage: input_file_or_folder")
+        sys.exit(1)
+
     file_list = []
     if os.path.isfile(arg):
         file_list.append(arg)
