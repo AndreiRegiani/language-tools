@@ -3,7 +3,7 @@ import sys
 from collections import Counter
 
 
-IGNORE_CHARS = ''
+IGNORE_CHARS = ".,:;/\“”‛’’‘″′″′‚—–-—=)(}{][?%><ӏӏ|·«»°•··،·፣፡¹‧।→%△►་◄%~′\'\"1234567890"
 
 
 def input_files():
@@ -19,7 +19,8 @@ def input_files():
     elif os.path.isdir(arg):
         for file_ in os.listdir(arg):
             dir_file = "{}/{}".format(arg.replace('/', ''), file_)
-            file_list.append(dir_file)
+            if os.path.isfile(dir_file):
+                file_list.append(dir_file)
     else:
         raise FileNotFoundError("Input file does not exist")
     return file_list
