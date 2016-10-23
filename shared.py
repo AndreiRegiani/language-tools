@@ -1,6 +1,7 @@
 import os
 import sys
 from collections import Counter
+from langcodes import Language
 
 
 IGNORE_CHARS = ".,:;/\“”‛’’‘″′″′‚—–-—=)(}{][?%><ӏӏ|·«»°•··،·፣፡¹‧।→%△►་◄%~′\'\"1234567890"
@@ -22,7 +23,7 @@ def input_files():
             if os.path.isfile(dir_file):
                 file_list.append(dir_file)
     else:
-        raise FileNotFoundError("Input file does not exist")
+        raise FileNotFoundError("File input does not exist")
     return file_list
 
 
@@ -35,3 +36,7 @@ def word_frequency(file_):
             words = line.lower().split()
             wordlist.update(words)
     return wordlist
+
+
+def langcode_name(code):
+    return Language.make(language=code).language_name().title()
